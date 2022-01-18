@@ -24,18 +24,50 @@ app.get('/', (req,res)=>{
 })
 
 app.post('/convert-mp3', async (req,res) =>{
-    const videoID = req.body.videoID;
+
+    
+    videoID = req.body.videoID;
     if(videoID === undefined ||
         videoID === '' ||
         videoID === null){
             return res.render('index', {success:false, message:"Please enter a video name"});
         }else{
+            function testURL(my){ // #1
+                videoID = my.split('=');
+                videoID = videoID[1];
+                videoID =videoID.split('&');
+                videoID = videoID[0];
+                console.log(videoID)
+                return videoID;
+            }            
+            //testURL(videoID);
+
+            function testURLbyRegex(el){ // #2
+                //  https://www.youtube.com/watch?v=04854XqcfCY&ab_channel=QueenOfficial
+                if(el.match(/=(.*?)&/g)){
+                    console.log(`${el} est valide! `);
+                    //console.log( el.match(/=(.*?)&/g));
+                    let result = el.match(/=(.*?)&/g);
+                    result=result.join();
+                    //const newregex =/(?!=).*(?<!&)/;
+                    videoID0=result.match(/(?!=).*(?<!&)/);
+                    //console.log('new', videoID0);
+                    videoID = videoID0;
+                }else{ // 04854XqcfCY
+                    videoID=el;
+                }                
+                return videoID;
+
+            }
+            testURLbyRegex(videoID)
+
             const fetchAPI = await fetch(`https://youtube-mp36.p.rapidapi.com/dl?id=${videoID}`,{
                 "method" : "GET",
                 "headers":{
                     "x-rapidapi-key" : process.env.API_KEY,
                     "x-rapidapi-host" : process.env.API_HOST,
                 }
+            
             });
 
             const fetchResponse = await fetchAPI.json();
