@@ -25,17 +25,21 @@
     <div class="top-container">
         <form action="/convert-mp3" method="POST" id="form">
             <h1><i class="fab fa-youtube"></i>Youtube MP3 convert</h1>
-            <h4>Enter the URL of the video</h4>
-            <p>By example : https://www.youtube.com/watch?v=04854XqcfCY&ab_channel=QueenOfficial </p>
+            <h4>Enter the URL of the video OR the videoID</h4>
+            <ul>
+                <li><b>By example for the URL:</b> https://www.youtube.com/watch?v=04854XqcfCY&ab_channel=QueenOfficial </li>
+                <li><b>By example for the Video ID:</b> 04854XqcfCY </li>
+            </ul>
+            
             <div>
-                <input type="text" name="videoID" id="" placeholder="the Video URL">
-                <button id="convert-btn">Convert the URL</button>
+                <input type="text" name="videoID" id="" placeholder="the Video URL or the Video ID">
+                <button id="convert-btn">Convert</button>
             </div>
         </form>
     </div>
 
     <div class="bottom-container">
-        <p>Here we are !</p>
+        
         <%  if(typeof success !="undefined" && success){ %>
             <div class="success">
                 <p><%= song_title %></p>
@@ -48,9 +52,12 @@
         <% } %>    
    
   <!-- Add your site or application content here -->
-  <p><small>© LVdesign Studio base from  the work of <a href="https://www.youtube.com/watch?v=_EOBQ9ofqPA&list=PLtMugc7g4Gaq1FdZMF3BUTQPxVxYQP_Ls&index=5&ab_channel=codefoxx" reel="bookmark">codefoxx</a> 👍</small></p>
   
 
+</div>
+<div class="footer">
+    <p><small>© LVdesign Studio base from  the work of <a href="https://www.youtube.com/watch?v=_EOBQ9ofqPA&list=PLtMugc7g4Gaq1FdZMF3BUTQPxVxYQP_Ls&index=5&ab_channel=codefoxx" reel="bookmark">codefoxx</a> 👍</small></p>
+  
 </div>
 
   <script src="js/main.js"></script>
