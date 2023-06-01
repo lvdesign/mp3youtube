@@ -29,6 +29,31 @@ ul >li {
     list-style: none;
 }
 
+#convert-btn{
+    border: 2px solid rgb(179, 235, 245);
+    background-color: rgb(179, 235, 245);
+    color: black;
+}
+
+#convert-btn:hover{
+    background-color: black;
+    color: white;
+}
+
+#download-btn{
+    background-color: black;
+    color: white;
+}
+#download-btn:hover{
+    background-color:white;
+    color: black;
+    
+}
+.success{
+    background-color:white;
+    color: black;
+}
+
 
 /* Tablette 
 @media(max-width:768px){
